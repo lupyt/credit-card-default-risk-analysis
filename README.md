@@ -13,7 +13,7 @@ The analysis focuses on three key areas:
 
 ## Dashboard
 
-The primary metric used throughout the analysis was the default rate, defined as the percentage of customers who defaulted in the following month.
+**The primary metric used throughout the analysis was the default rate, defined as the percentage of customers who defaulted in the following month.**
 
 The Excel dashboard presents the main results across three analytical areas: Credit Exposure, Repayment Behaviour, and Customer Profile.
 
@@ -31,23 +31,24 @@ The dashboard is connected to PostgreSQL views through Power Query, allowing the
 - Delay recency - Recent payment delays were associated with higher default rates than earlier delays, even among customers with the same total number of delayed months.
 - Customer profile - Demographic differences were observed, but repayment-related patterns were generally more pronounced.
 
-### Credit Limit and Default Risk
-Default rates decrease consistently as credit limits increase.
-Customers with credit limits below NT$50,000 (New Taiwan dollars) had a default rate of approximately 36%, compared with approximately 11% among customers with limits of NT$500,000 or more.
-This indicates a strong association between credit limits and default risk. However, the relationship should not be interpreted as causal. Higher credit limits may have been granted to customers who were already considered less risky based on information unavailable in the dataset, such as previous credit history.
+### Credit Limit
+- Default rates consistently decreased as credit limits increased, from approximately 36% among customers with limits below NT$50,000 (New Taiwan Dollar) to 11% among those with limits of NT$500,000 or more.
+- The largest drop occurred between the two lowest credit limit groups, with default rates falling from 36% to 26%, a difference of approximately 10 percentage points.
+- However, this relationship should not be interpreted as causal. Higher credit limits may have been granted to customers already considered less risky based on factors unavailable in the dataset, such as income or previous credit history.
 
-### Maximum Credit Utilization and Default Risk
+### Maximum Credit Utilization
 Maximum credit utilization represents the highest percentage of a customer's credit limit used in a single month during the six-month observation period.
-Default rates were relatively similar among customers with maximum utilization below 25% and those in the 25–50% range.
-Default rates began to increase in the 50–75% maximum credit utilization group and continued to rise across each subsequent utilization group.
-This suggests that high credit utilization may be a useful indicator when monitoring credit risk.
+- Customers with maximum credit utilization below 50% had similar default rates of approximately 18–19%.
+- Default rates began to increase among customers whose maximum utilization reached 50–75% (24%), rising further to 25% in the 75–100% group.
+- Customers whose maximum utilization exceeded 100% had the highest default rate (30%).
 
-### Repayment History and Default Risk
+### Repayment History
 Delinquency frequency measures the number of months in which a customer had a recorded payment delay during the six-month observation period.
-Customers with more frequent payment delays generally exhibited higher default rates than those with fewer or no recorded delays.
-The results indicate that repayment history is an important behavioural factor associated with default risk.
+- Customers with no recorded payment delays had the lowest default rate, at approximately 12%.
+- Customers with a recorded payment delay in just one month had a default rate of 30%, more than twice the rate observed among customers without delays.
+- Default rates continued to increase with delinquency frequency, reaching approximately 64% among customers with four or more delayed months.
 
-### Timing of Payment Delays and Default Risk
+### Timing of Payment Delays
 To examine whether the timing of repayment delays matters, the six-month observation period was divided into two three-month periods:
 - Earlier period: April–June 2005
 - Recent period: July–September 2005
@@ -56,43 +57,26 @@ The analysis compared customers with the same total number of delayed months, wi
 
 The table below presents default rates for customers with exactly one, two, or three delayed months.
 
-| Period of Delay |	1 month | 2 months | 3 months |
+| Timing of Delays | 1 month | 2 months | 3 months |
 |:---|:---:|:---:|:---:|
 | April–June	| 20% | 28% | 33% |
 | July–September |	34% | 40% | 56% |
 
 In all three comparisons, customers with recent payment delays had higher default rates, with differences ranging from approximately 12 to 23 percentage points.
-This suggests that recent repayment difficulties may provide additional information about default risk beyond the total frequency of delays.
 
-### Customer Profile and Default Risk
-- Age - Default rates ranged from 20% among customers aged 30–39 to 28% among those aged 60+. However, the 60+ group had a relatively small sample size (339 customers).
+### Customer Profile
+- Age - Default rates ranged from 20% among customers aged 30–39 to 28% among those aged 60+, while the remaining age groups had rates between 23% and 25%. However, the 60+ group had the smallest sample size (339 customers), so this result should be interpreted with caution.
 - Sex - Male customers had a higher default rate (24%) than female customers (21%).
-- Education - Graduate school customers had the lowest default rate (19%), compared with university (24%) and high school (25%) graduates.
+- Education - Customers with graduate school education had the lowest default rate (19%), followed by university (24%) and high school (25%).
 
 Overall, demographic differences were generally less pronounced than those associated with repayment behaviour.
 
 ## Business Recommendations
-1. Prioritize repayment history in credit risk assessment.
-
-Payment delay frequency showed a clear association with default rates. Customers with repeated payment delays should be considered higher-risk when assessing the likelihood of default in the following month.
-
-2. Consider the timing of payment delays when assessing default risk.
-
-Customers with recent delays exhibited higher default rates than customers with the same number of delayed months occurring earlier. 
-Risk assessment should distinguish between recent and earlier payment delays rather than relying solely on the total number of delayed months.
-
-3. Consider credit exposure when assessing default risk
-
-Customers with higher credit limits generally exhibited lower default rates. Additionally, default rates increased more noticeably when maximum credit utilization exceeded 50%, with further increases across higher utilization groups.
-
-4. Prioritize credit exposure and repayment behaviour over demographic characteristics
-
-Demographic characteristics showed smaller differences in default rates than credit exposure and repayment-related indicators. However, these differences were still noticeable and may provide useful context when analyzing customer risk.
-
-5. Combine multiple indicators.
-
-Credit limit, maximum credit utilization, delinquency frequency, delay recency and demographic characteristics were all associated with differences in default rates.
-Combining these indicators may provide a more comprehensive understanding of factors associated with default risk than relying on any single measure.
+1. **Prioritize repayment history in credit risk assessment** - Customers with repeated payment delays should be considered a higher-risk group when assessing default risk in the following month.
+2. **Consider the timing of payment delays when assessing default risk** - Risk assessment should distinguish between recent and earlier payment delays rather than relying solely on the total number of delayed months.
+3. **Consider credit exposure when assessing default risk** - Credit limits and maximum credit utilization should be considered when assessing default risk.
+4. **Treat demographic findings as supplementary context** - Demographic differences were generally smaller than those associated with repayment behaviour and credit exposure. They provide useful context, but the use of certain demographic characteristics in credit decisions may be legally restricted.
+5. **Combine multiple indicators** - Combining repayment history and credit exposure may provide a more complete picture of default risk than relying on a single factor, while demographic patterns can be considered as additional descriptive context.
 
 ## Dataset Structure
 Source: https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients
@@ -133,7 +117,7 @@ The following decisions were made during data preparation:
 
 ### Limitations
 Several limitations should be considered when interpreting the results:
-- Historical dataset: The observations cover April–September 2005 and may not reflect current customer behaviour.
+- Historical dataset: The observations cover April-September 2005 and may not reflect current customer behaviour.
 - Limited observation window: Only six months of repayment history were available.
 - Undocumented categories: Certain education and repayment status values are not fully explained in the original documentation.
 - Limited financial information: The dataset does not include important factors such as customer income, employment status, or previous credit history, limiting the interpretation of observed differences between credit limit groups.
