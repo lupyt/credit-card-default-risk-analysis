@@ -7,13 +7,13 @@ This project analyzes credit card customer data to identify factors associated w
 The dataset contains information on 30,000 credit card clients in Taiwan, covering a six-month period from April to September 2005.
 
 The analysis focuses on three key areas:
-1. **Credit Exposure:** Credit limits and maximum credit utilization.
-2. **Repayment Behaviour:** Frequency and timing of payment delays.
+1. **Repayment Behaviour:** Frequency and timing of payment delays.
+2. **Credit Exposure:** Credit limits and maximum credit utilization.
 3. **Customer Profile:** Demographic characteristics and their relationship with default risk.
 
 ## Dashboard
 
-**The primary metric used throughout the analysis was the default rate, defined as the percentage of customers who defaulted in the following month.**
+The primary metric used throughout the analysis was the **default rate**, defined as the percentage of customers who defaulted in the following month.
 
 The Excel dashboard presents the main results across three analytical areas: Credit Exposure, Repayment Behaviour, and Customer Profile.
 
@@ -25,22 +25,11 @@ The dashboard is connected to PostgreSQL views through Power Query, allowing the
 
 ### Key Findings
 - **Overall default rate:** Approximately 22% of customers defaulted in the following month.
-- **Credit limits:** Customers with lower credit limits exhibited substantially higher default rates.
-- **Credit utilization:** Higher maximum credit utilization was associated with increased default risk among customers whose maximum utilization exceeded 50%.
 - **Repayment history:** Customers with more frequent payment delays generally had higher default rates.
 - **Delay recency:** Recent payment delays were associated with higher default rates than earlier delays, even among customers with the same total number of delayed months.
+- **Credit limits:** Customers with lower credit limits exhibited substantially higher default rates.
+- **Credit utilization:** Higher maximum credit utilization was associated with increased default risk among customers whose maximum utilization exceeded 50%.
 - **Customer profile:** Demographic differences were observed, but repayment-related patterns were generally more pronounced.
-
-### Credit Limit
-- Default rates consistently decreased as credit limits increased, from approximately 36% among customers with limits below NT$50,000 (New Taiwan Dollar) to 11% among those with limits of NT$500,000 or more.
-- The largest drop occurred between the two lowest credit limit groups, with default rates falling from 36% to 26%, a difference of approximately 10 percentage points.
-- However, this relationship should not be interpreted as causal. Higher credit limits may have been granted to customers already considered less risky based on factors unavailable in the dataset, such as income or previous credit history.
-
-### Maximum Credit Utilization
-Maximum credit utilization represents the highest percentage of a customer's credit limit used in a single month during the six-month observation period.
-- Customers with maximum credit utilization below 50% had similar default rates of approximately 18–19%.
-- Default rates began to increase among customers whose maximum utilization reached 50–75% (24%), rising further to 25% in the 75–100% group.
-- Customers whose maximum utilization exceeded 100% had the highest default rate (30%).
 
 ### Repayment History
 Delinquency frequency measures the number of months in which a customer had a recorded payment delay during the six-month observation period.
@@ -64,12 +53,22 @@ The table below presents default rates for customers with exactly one, two, or t
 
 In all three comparisons, customers with recent payment delays had higher default rates, with differences ranging from approximately 12 to 23 percentage points.
 
+### Credit Limit
+- Default rates consistently decreased as credit limits increased, from approximately 36% among customers with limits below NT$50,000 (New Taiwan Dollar) to 11% among those with limits of NT$500,000 or more.
+- The largest drop occurred between the two lowest credit limit groups, with default rates falling from 36% to 26%, a difference of approximately 10 percentage points.
+- However, this relationship should not be interpreted as causal. Higher credit limits may have been granted to customers already considered less risky based on factors unavailable in the dataset, such as income or previous credit history.
+
+### Maximum Credit Utilization
+Maximum credit utilization represents the highest percentage of a customer's credit limit used in a single month during the six-month observation period.
+- Customers with maximum credit utilization below 50% had similar default rates of approximately 18–19%.
+- Default rates began to increase among customers whose maximum utilization reached 50–75% (24%), rising further to 25% in the 75–100% group.
+- Customers whose maximum utilization exceeded 100% had the highest default rate (30%).
+
+
 ### Customer Profile
 - **Age:** Default rates ranged from 20% among customers aged 30–39 to 28% among those aged 60+, while the remaining age groups had rates between 23% and 25%. However, the 60+ group had the smallest sample size (339 customers), so this result should be interpreted with caution.
 - **Sex:** Male customers had a higher default rate (24%) than female customers (21%).
 - **Education:** Customers with graduate school education had the lowest default rate (19%), followed by university (24%) and high school (25%).
-
-Overall, demographic differences were generally less pronounced than those associated with repayment behaviour.
 
 ## Business Recommendations
 1. **Prioritize repayment history in credit risk assessment:** Customers with repeated payment delays should be considered a higher-risk group when assessing default risk in the following month.
