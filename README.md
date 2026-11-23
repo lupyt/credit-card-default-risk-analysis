@@ -4,7 +4,7 @@
 
 This project analyzes credit card customer data to identify factors associated with payment default risk. The goal is to understand how credit exposure, repayment behaviour, and customer characteristics relate to the likelihood of default in the following month.
 
-The dataset contains information on 30,000 credit card clients in Taiwan, covering a six-month period from April to September 2005.
+The analysis uses data from 30,000 credit card clients in Taiwan, including six months of repayment history from April to September 2005.
 
 The analysis focuses on three key areas:
 1. **Repayment Behaviour:** Frequency and timing of payment delays.
