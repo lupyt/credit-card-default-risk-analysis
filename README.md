@@ -17,9 +17,10 @@ The primary metric used throughout the analysis was the **default rate**, define
 
 The Excel dashboard presents the main results across three analytical areas: Credit Exposure, Repayment Behaviour, and Customer Profile.
 
-![Dashboard](images/dashboard.png)
+![Dashboard](images/credit_card_default_risk_dashboard.png)
 
-The dashboard is connected to PostgreSQL views through Power Query, allowing the results to be refreshed when the underlying data changes.
+The dashboard is connected to PostgreSQL views through Power Query, allowing the results to be refreshed when the underlying data changes.  
+Worksheets containing PivotTables are hidden.
 
 ## Analysis Summary
 
